@@ -1,4 +1,15 @@
 $(function(){
+    imgNum_source = $('.item-sm').length;
+//    console.log(imgNum_source);
+    var appendContent = $('.pic-box-sm').html();
+//    console.log(appendContent);
+    $('.pic-box-sm').append(appendContent).append(appendContent);
+//    console.log($('.pic-box-sm').html());
+    imgNum = $('.item-sm').length;//复制当前所有图片并在页面前后全部插入
+//    console.log(imgNum_source*imgWid);
+    $('.pic-box-sm').css('left',-imgNum_source*imgWid);
+//    console.log(imgNum);
+    
     img_container_width = Math.floor(imgWid*imgNum);//包裹所有图片的容器宽度
     windowWidth = $('.carousel-container-sm').width();//获取轮播图可视区域宽度
 //    console.log(windowWidth);
@@ -10,7 +21,7 @@ $(function(){
     
     var dotContent = '';
     var n = Math.ceil(windowWidth/imgWid)-1;
-    for(var i=0;i<imgNum-n;i++){
+    for(var i=0;i<(imgNum/3);i++){
        dotContent += '<span class="point"></span>';
     }
 //    console.log(dotContent);
@@ -23,7 +34,8 @@ $(function(){
 
 var imgWid = $('.item-sm').width();//轮播图图片宽度
 //console.log(imgWid);
-var imgNum = $('.item-sm').length;//轮播图所有图片数量
+var imgNum_source;//轮播图html页面图片数量
+var imgNum;//轮播图js处理后所有图片数量
 //console.log(imgNum);
 var img_container_width;
 var imgContainerNum;
@@ -68,26 +80,30 @@ carousel.slide = function(){
 //2--向右滑动
 carousel.move = function(direc){
     if(direc==1){
-        Num = -Math.floor(offsetLeft/imgWid)+1;
-//        console.log((img_container_width-windowWidth));
-        if( -offsetLeft < Math.floor(img_container_width-windowWidth)-2){
-//            console.log(-offsetLeft)
-            var Left = offsetLeft-imgWid+'px';
+        Num = -Math.floor(offsetLeft/imgWid)+1-imgNum_source;
+//        console.log(img_container_width/2-imgWid);
+        var Left = offsetLeft-imgWid+'px';
+        if( -offsetLeft < Math.floor((imgNum_source*2-1)*imgWid)-2){
+//            console.log(-offsetLeft)            
             $('.pic-box-sm').stop().animate({left:Left});
         }else{
-            $('.pic-box-sm').stop().animate({left:0})
+            $('.pic-box-sm').stop().animate({left:Left},function(){
+                $('.pic-box-sm').css('left',0);
+            });
             Num = 0;
         }  
     }else if(direc==2){
-        Num = -Math.floor(offsetLeft/imgWid)-1;
+        Num = -Math.floor(offsetLeft/imgWid)-1-imgNum_source;
 //        console.log(Num);
+        var Left1 = offsetLeft+imgWid+'px';
+        var Left2 = -(Math.floor((imgNum_source*2-1)*imgWid)-2);
         if(offsetLeft >=0 ){
-            var Left = -(Math.floor(img_container_width-windowWidth)-2);
-            $('.pic-box-sm').stop().animate({left:Left});
+            $('.pic-box-sm').stop().animate({left:Left1},function(){
+                $('.pic-box-sm').css('left',Left2);
+            });
             Num = $('.point').length-1;
         }else{
-            var Left = offsetLeft+imgWid+'px';
-            $('.pic-box-sm').stop().animate({left:Left})
+            $('.pic-box-sm').stop().animate({left:Left1});
         }
     }
     $('.point').removeClass('active');

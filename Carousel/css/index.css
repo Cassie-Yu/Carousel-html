@@ -56,7 +56,7 @@
 }
 .carousel-container-sm .pic-box-sm .item-sm img {
   margin: auto;
-  width: 96%;
+  width: 92%;
 }
 .carousel-container-sm .dot-box {
   width: 100%;
@@ -73,11 +73,11 @@
 .carousel-container-sm .dot-box .active {
   background-color: #ff4400;
 }
-.a .dot-box {
+.dot .dot-box {
   width: 100%;
   text-align: center;
 }
-.a .dot-box .point {
+.dot .dot-box .point {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -85,6 +85,6 @@
   background-color: #b7b7b7;
   margin: 0 3px;
 }
-.a .dot-box .active {
+.dot .dot-box .active {
   background-color: #ff4400;
 }
