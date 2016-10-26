@@ -1,0 +1,69 @@
+@import url(theme.less);
+
+.carousel-container{
+    margin:0 auto;
+    width:@view-window-width;
+    height:@view-window-height;
+    position:relative;
+    overflow:hidden;
+    .pic-box{
+        overflow:hidden;//防止图片的高度超出盒子
+        height:100%;
+        position:absolute;
+    }
+    .item{
+        width:@view-window-width;
+        height:100%;
+        float:left;
+        display:flex;
+        img{
+            margin:auto;
+            width:100%;
+        }
+    }
+    .a;
+}
+
+.carousel-container-sm{
+    margin:0 auto;
+    width:@view-window-width;
+    height:@view-window-height-sm;
+    position:relative;
+    overflow:hidden;
+    .pic-box-sm{
+        overflow:hidden;//防止图片的高度超出盒子
+        height:100%;
+        position:absolute;
+        .item-sm{
+            width:@view-window-width/@img-sm-num;
+            height:100%;
+            float:left;
+            display:flex;
+            img{
+                margin:auto;
+                width:96%;
+            }
+        }
+    }
+    .a;
+}
+
+.a{
+   .dot-box{
+        width:100%;
+        text-align:center;
+        .point{
+            display:inline-block;
+            width:@point-size;
+            height:@point-size;
+            border-radius:50%;
+            background-color:@point-color;
+            margin:0 3px;
+        }
+        .active{
+            background-color:@point-click-color;
+        }
+    } 
+}
+
+
