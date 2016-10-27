@@ -77,8 +77,7 @@ carousel.move = function(direc){
         var Left1 = offsetLeft+imgWid+'px';//中间时每次需要移动的距离
         var Left2 = -Math.floor((imgNum-2)*imgWid);//滑动到边界时跳转的位置
         if(offsetLeft >= -imgWid ){
-            var Left = -Math.floor((imgNum-2)*imgWid);
-            $('.pic-box').stop().animate({left:Left},function(){
+            $('.pic-box').stop().animate({left:Left1},function(){
             $('.pic-box').css('left',Left2);});
             Num = $('.point').length-1;
         }else{
