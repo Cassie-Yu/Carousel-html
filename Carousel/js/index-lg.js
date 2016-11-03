@@ -1,4 +1,13 @@
 $(function(){
+    var last_img = $('.pic-box .item:last').clone();
+//    console.log(last_img);
+    var first_img = $('.pic-box .item:first').clone();
+//    console.log(first_img);
+    $('.pic-box').prepend(last_img).append(first_img);//页面前后各再添加一张图片
+    
+    imgNum = $('.item').length;//获取图片的数量
+//     console.log(imgNum);
+    
     img_container_width = Math.floor(imgWid*imgNum);//包裹所有图片的容器宽度    
     $('.pic-box').css("width",img_container_width);//设置包裹所有图片的容器宽度  
     
@@ -20,11 +29,10 @@ $(function(){
 
 var imgWid = $('.item').width();//获取每一张图片的宽度
 //console.log(imgWid);
-var imgNum = $('.item').length;//获取图片的数量
-//console.log(imgNum);
 var img_container_width;
 
 var carousel = new Object();
+var imgNum;//获取图片的数量
 var touchStart;//开始滑动时手指位置
 var touchEnd;//结束滑动时手指位置
 var moveX;//滑动的X方向位移
